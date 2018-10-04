@@ -1,0 +1,13 @@
+<div>
+  <h2 class="text-center">Permutation Page</h2>
+  <div class="col-lg-12">
+    <h4 class="top-space">Исходная последовательность символов</h4>
+    <div class="col-lg-12">
+      <input type="text" class="formControl" [(ngModel)]="model.value" (ngModelChange)="onValueChanged($event)">
+    </div>
+    <h4>Все возможные комбинации</h4>
+    <div class="col-lg-12">
+      <span *ngFor="let item of model.combs; let i = index">{{model.combs[i]}}, </span>
+    </div>
+  </div>
+</div>

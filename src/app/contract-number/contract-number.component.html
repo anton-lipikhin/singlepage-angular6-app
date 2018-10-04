@@ -1,0 +1,27 @@
+<div class="container">
+  <form [formGroup]="contractNumberForm" #frm="ngForm" (ngSubmit)="onSubmit()">
+    <div class="cross-validation"
+         [class.cross-validation-error]="frm.errors?.identityRevealed && (frm.touched || frm.dirty)">
+      <div class="form-group">
+        <label for="contractNumber">Номер договора</label>
+        <input type="text" class="form-control" id="contractNumber" appUppercase
+               formControlName="contractNumber"
+               placeholder="{{model.placeholder}}">
+        <div *ngIf="contractNumber.invalid && (contractNumber.dirty || contractNumber.touched)"
+             class="alert alert-danger">
+          <div *ngIf="contractNumber.errors.required">
+            Введите номер договора
+          </div>
+          <div *ngIf="contractNumber.errors.textValidator && !contractNumber.errors.required">
+            Неверный формат номера договора
+          </div>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-success" [disabled]="frm.invalid || submitted">Отправить</button>
+      <span class="left-space text-danger" *ngIf="submitted">
+          Запрос пошел. Ждем ответа...
+      </span>
+    </div>
+  </form>
+
+</div>
